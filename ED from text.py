@@ -93,11 +93,11 @@ X_test = ["I am happy today", "I feel very sad", "This is amazing", "I am angry"
 
 # Convert text to TF-IDF features
 vectorizer = TfidfVectorizer()
-X_train_tfidf = vectorizer.fit_transform(["happy day", "very sad", "amazing time", "angry words"])  # Dummy train data
+X_train_tfidf = vectorizer.fit_transform(["happy day", "very sad", "amazing time", "angry words"])
 X_test_tfidf = vectorizer.transform(X_test) 
 
 # Dummy emotion labels for testing
-y_test = ["happy", "sad", "happy", "angry"]  # Actual labels
+y_test = ["happy", "sad", "happy", "angry"]
 y_pred = ["happy", "sad", "happy", "sad"] 
 
 # Generate Confusion Matrix
