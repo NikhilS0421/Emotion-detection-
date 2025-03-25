@@ -139,4 +139,27 @@ text_input.observe(predict_emotion, names="value")
 
 # Display widgets
 display(text_input, output_label)
+# gui for demo link
+
+import gradio as gr
+import joblib
+
+# Load trained model
+model, vectorizer = joblib.load("emotion_model.pkl")
+
+def predict_emotion(text):
+    if text.strip():
+        sample_tfidf = vectorizer.transform([text])
+        predicted_emotion = model.predict(sample_tfidf)[0]
+        return f"Predicted Emotion: {predicted_emotion}"
+    return "Please enter valid text."
+
+demo = gr.Interface(
+    fn=predict_emotion,
+    inputs="text",
+    outputs="text",
+    title="Emotion Detection",
+    description="Enter a sentence to predict its emotion."
+)
+demo.launch(share=True, debug=True)
 
